@@ -1,0 +1,173 @@
+object Form1: TForm1
+  Left = 355
+  Top = 226
+  BorderStyle = bsSingle
+  Caption = 'Mahasiswa'
+  ClientHeight = 272
+  ClientWidth = 672
+  Color = clMoneyGreen
+  UseDockManager = True
+  DefaultMonitor = dmDesktop
+  Font.Charset = DEFAULT_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -11
+  Font.Name = 'MS Sans Serif'
+  Font.Style = []
+  OldCreateOrder = False
+  WindowState = wsMaximized
+  DesignSize = (
+    672
+    272)
+  PixelsPerInch = 96
+  TextHeight = 13
+  object Label2: TLabel
+    Left = 32
+    Top = 72
+    Width = 83
+    Height = 20
+    Caption = 'Mata Kuliah'
+    Color = clCream
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -17
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label3: TLabel
+    Left = 56
+    Top = 104
+    Width = 57
+    Height = 20
+    Caption = 'Tanggal'
+    Color = clCream
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -17
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+  end
+  object Label1: TLabel
+    Left = 72
+    Top = 32
+    Width = 42
+    Height = 20
+    Caption = 'Nama'
+    Color = clCream
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -17
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+  end
+  object nama: TEdit
+    Left = 120
+    Top = 32
+    Width = 121
+    Height = 21
+    TabOrder = 0
+  end
+  object tanggal: TDateTimePicker
+    Left = 120
+    Top = 104
+    Width = 121
+    Height = 21
+    BiDiMode = bdRightToLeft
+    Date = 43384.932944571760000000
+    Time = 43384.932944571760000000
+    ParentBiDiMode = False
+    TabOrder = 1
+  end
+  object DBGrid1: TDBGrid
+    Left = 256
+    Top = 32
+    Width = 337
+    Height = 89
+    DataSource = DataModule3.DataSource1
+    Options = [dgTitles, dgIndicator, dgColumnResize, dgColLines, dgRowLines, dgTabs, dgConfirmDelete, dgCancelOnExit]
+    ReadOnly = True
+    TabOrder = 2
+    TitleFont.Charset = DEFAULT_CHARSET
+    TitleFont.Color = clWindowText
+    TitleFont.Height = -11
+    TitleFont.Name = 'MS Sans Serif'
+    TitleFont.Style = []
+    OnDblClick = DBGrid1DblClick
+  end
+  object Button1: TButton
+    Left = 120
+    Top = 136
+    Width = 75
+    Height = 25
+    Caption = 'Simpan'
+    TabOrder = 3
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Left = 208
+    Top = 136
+    Width = 75
+    Height = 25
+    Caption = 'Edit'
+    TabOrder = 4
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Left = 296
+    Top = 136
+    Width = 75
+    Height = 25
+    Caption = 'Hapus'
+    TabOrder = 5
+    OnClick = Button3Click
+  end
+  object matakuliah: TComboBox
+    Left = 120
+    Top = 72
+    Width = 121
+    Height = 21
+    Style = csDropDownList
+    ItemHeight = 13
+    TabOrder = 6
+    Items.Strings = (
+      'IPA'
+      'IPS'
+      'MATEMATIKA'
+      'PKN'
+      'AGAMA ISLAM'
+      'KEWIRAUSHAAN')
+  end
+  object edit1: TEdit
+    Left = 472
+    Top = 136
+    Width = 121
+    Height = 25
+    Anchors = [akLeft, akTop, akRight, akBottom]
+    TabOrder = 7
+    Text = ' '
+    OnKeyPress = edit1KeyPress
+  end
+  object Button4: TButton
+    Left = 40
+    Top = 136
+    Width = 75
+    Height = 25
+    Caption = 'Mata kuliah'
+    TabOrder = 8
+    OnClick = Button4Click
+  end
+  object Button5: TButton
+    Left = 384
+    Top = 136
+    Width = 75
+    Height = 25
+    Caption = 'Bersih'
+    TabOrder = 9
+    OnClick = Button5Click
+  end
+end

@@ -1,0 +1,147 @@
+unit Unit1;
+
+interface
+
+uses
+ Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, Grids, DBGrids, ComCtrls, StdCtrls, ExtCtrls;
+
+type
+  TForm1 = class(TForm)
+    nama: TEdit;
+    tanggal: TDateTimePicker;
+    DBGrid1: TDBGrid;
+    Button1: TButton;
+    Button2: TButton;
+    Button3: TButton;
+    matakuliah: TComboBox;
+    Label1: TLabel;
+    Label2: TLabel;
+    Label3: TLabel;
+    edit1: TEdit;
+    Button4: TButton;
+    Button5: TButton;
+    procedure Button1Click(Sender: TObject);
+    procedure DBGrid1DblClick(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
+    procedure Button3Click(Sender: TObject);
+    procedure Button5Click(Sender: TObject);
+    procedure Button4Click(Sender: TObject);
+    procedure edit1KeyPress(Sender: TObject; var Key: Char);
+
+
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+    procedure bersih;
+  end;
+
+var
+  Form1: TForm1;
+
+implementation
+
+uses Unit3, Unit2;
+procedure TForm1.bersih;
+begin
+  nama.Text := '';
+  matakuliah.Text := '';
+  tanggal.date := now;
+end;
+
+
+{$R *.dfm}
+
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+if nama.Text = '' then
+begin
+Showmessage('Nama masih kosong');
+nama.SetFocus;
+end else
+if matakuliah.Text = '' then
+begin
+showmessage('Mata Kuliah masih kosong');
+matakuliah.SetFocus;
+end else
+begin
+  with DataModule3.ZTable1 do
+begin
+  Append;
+  FieldByName('nama').AsString := nama.text;
+  FieldByName('matkul').AsString := matakuliah.text;
+  FieldByName('tgl').AsDateTime := tanggal.date;
+  Post;
+  Showmessage('Data berhasil di tambahkan');
+  bersih;
+end;
+end;
+end;
+procedure TForm1.DBGrid1DblClick(Sender: TObject);
+begin
+ with DataModule3.ZTable1 do
+  begin
+    nama.Text := FieldByName('nama').AsString;
+    matakuliah.Text := FieldByName('matkul').AsString;
+    tanggal.date := FieldByName('tgl').AsDateTime;
+  end;
+end;
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+ with Datamodule3.ZTable1 do
+ begin
+  Edit;
+  FieldByName('nama').AsString := nama.Text;
+  FieldByName('matkul').AsString := matakuliah.Text;
+  FieldByName('tgl').AsDateTime := tanggal.date;
+  Post;
+  Showmessage('Data berhasil di ubah');
+end;
+end;
+procedure TForm1.Button3Click(Sender: TObject);
+begin
+ With Datamodule3.ZTable1 do
+  begin
+  delete;
+  Showmessage('Data telah dihapus');
+  end;
+end;
+procedure TForm1.Button5Click(Sender: TObject);
+begin
+bersih;
+end;
+
+procedure TForm1.Button4Click(Sender: TObject);
+begin
+form1.hide;
+form2.show
+end;
+
+procedure TForm1.edit1KeyPress(Sender: TObject; var Key: Char);
+//var cari : string;
+begin
+//cari := '*'+edit1.text+'*';
+ // if edit1.Text <> '' then //Jika edit1.text tidak kosong maka lakukan
+   // begin
+    //  ZTable1.Filtered := false; //ztable dalam kondisi tidak terfilter
+     // ZTable1.Filter := 'nama LIKE '+quotedstr(cari)+' or matkul LIKE '+quotedstr(cari)+'' ;
+      //quotedstr berguna untuk mengatasi inputan menggunakan kutip ( ' )
+      //Perhatikan "nama" dan "jabatan" itu adalah nama field, dan proses filter akan di lakukan pada field "nama" atau "jabatan"
+      //ZTable1.Filtered := true; //ztable dalam kondisi terfilter
+    //end
+//  else
+  //  begin
+    //  ZTable1.Filtered := false; //ztable dalam kondisi tidak terfilter karena edit1.text kosong
+   // end
+//end;
+
+end;
+end.
+
+
+
+
+
+
+
